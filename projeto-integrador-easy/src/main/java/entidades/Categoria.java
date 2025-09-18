@@ -13,8 +13,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuario")
-public class Usuario extends PanacheEntityBase {
+@Table(name = "categoria")
+public class Categoria extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +23,9 @@ public class Usuario extends PanacheEntityBase {
     @Column(nullable = false)
     public String nome;
 
-    @Column(unique = true)
-    public String email;
+    @Column(nullable = false)
+    public String tipo;
 
-    public String senha;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     public List<Transacao> transacoes;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    public List<Investimento> investimentos;
-};
+}
