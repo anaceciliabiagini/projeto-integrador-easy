@@ -8,8 +8,9 @@
       "settings": {
       },
       "extensions": [
-        "vscjava.vscode-java-pack",
-        "redhat.vscode-quarkus"
+        "orms-azuretools.vscode-containers"
+        , "vscjava.vscode-java-pack"
+        , "redhat.vscode-quarkus"
       ]
     }
   },
