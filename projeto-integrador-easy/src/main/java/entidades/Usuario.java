@@ -2,6 +2,8 @@ package entidades;
 
 import java.util.List;
 
+import jakarta.json.bind.annotation.JsonbTransient;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -28,9 +30,11 @@ public class Usuario extends PanacheEntityBase {
 
     public String senha;
 
+    @JsonbTransient
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     public List<Transacao> transacoes;
 
+    @JsonbTransient
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     public List<Investimento> investimentos;
 };
