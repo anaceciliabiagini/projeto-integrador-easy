@@ -30,7 +30,7 @@ public class InvestimentoResource {
     @PUT
     @Path("/{id}")
     @Transactional
-    public void atualizar(@PathParam("id") Long id, Investimento investimento) {
+    public Investimento atualizar(@PathParam("id") Long id, Investimento investimento) {
         Investimento investimentoExistente = Investimento.findById(id);
         if (investimentoExistente != null) {
             investimentoExistente.valorAplicado = investimento.valorAplicado;
@@ -38,7 +38,9 @@ public class InvestimentoResource {
             investimentoExistente.tipoInvestimento = investimento.tipoInvestimento;
             investimentoExistente.usuario = investimento.usuario;
             investimentoExistente.persist();
+            return investimentoExistente;
         }
+        return null;
     }
 
     @DELETE

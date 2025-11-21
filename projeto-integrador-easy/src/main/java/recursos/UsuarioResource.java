@@ -30,14 +30,16 @@ public class UsuarioResource {
     @PUT
     @Path("/{id}")
     @Transactional
-    public void atualizar(@PathParam("id") Long id, Usuario usuario) {
+    public Usuario atualizar(@PathParam("id") Long id, Usuario usuario) {
         Usuario usuarioExistente = Usuario.findById(id);
         if (usuarioExistente != null) {
             usuarioExistente.nome = usuario.nome;
             usuarioExistente.email = usuario.email;
             usuarioExistente.senha = usuario.senha;
             usuarioExistente.persist();
+            return usuarioExistente;
         }
+        return null;
     }
 
     @DELETE

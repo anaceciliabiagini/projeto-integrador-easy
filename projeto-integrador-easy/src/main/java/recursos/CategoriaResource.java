@@ -30,13 +30,15 @@ public class CategoriaResource {
     @PUT
     @Path("/{id}")
     @Transactional
-    public void atualizar(@PathParam("id") Long id, Categoria categoria) {
+    public Categoria atualizar(@PathParam("id") Long id, Categoria categoria) {
         Categoria categoriaExistente = Categoria.findById(id);
         if (categoriaExistente != null) {
             categoriaExistente.nome = categoria.nome;
             categoriaExistente.tipo = categoria.tipo;
             categoriaExistente.persist();
+            return categoriaExistente;
         }
+        return null;
     }
 
     @DELETE

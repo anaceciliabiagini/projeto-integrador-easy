@@ -30,7 +30,7 @@ public class TransacaoResource {
     @PUT
     @Path("/{id}")
     @Transactional
-    public void atualizar(@PathParam("id") Long id, Transacao transacao) {
+    public Transacao atualizar(@PathParam("id") Long id, Transacao transacao) {
         Transacao transacaoExistente = Transacao.findById(id);
         if (transacaoExistente != null) {
             transacaoExistente.tipo = transacao.tipo;
@@ -40,7 +40,9 @@ public class TransacaoResource {
             transacaoExistente.categoria = transacao.categoria;
             transacaoExistente.usuario = transacao.usuario;
             transacaoExistente.persist();
+            return transacaoExistente;
         }
+        return null;
     }
 
     @DELETE
