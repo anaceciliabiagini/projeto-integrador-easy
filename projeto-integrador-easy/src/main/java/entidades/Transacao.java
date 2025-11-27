@@ -24,6 +24,9 @@ public class Transacao extends PanacheEntityBase {
     @Column(nullable = false)
     public String tipo;
 
+    @Column(nullable = false)
+    public String nome;
+
     @Column(nullable = false, precision = 10, scale = 2)
     public BigDecimal valor;
 
